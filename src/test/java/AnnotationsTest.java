@@ -42,7 +42,7 @@ public class AnnotationsTest extends BaseSeleniumTest {
         System.out.println("inupts size is "+inputs.size());
         System.out.println("buttons size is "+buttons.size());
         System.out.println("inuptsAndButtons size is "+inputsAndButtons.size());
-        
+
 
     }
 
