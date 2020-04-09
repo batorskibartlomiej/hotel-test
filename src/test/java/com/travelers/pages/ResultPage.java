@@ -26,8 +26,9 @@ public class ResultPage {
     }
 
 
-    public List<String> getHotelNames() {
+    public List<String> getHotelNames() throws InterruptedException {
         List<String> hotelNames = new ArrayList<>();
+        Thread.sleep(500);
         helper.waitForListOfWebElement(resultsTable.findElements(By.xpath("//h4//b")));
         List<WebElement> hotelNamesWebElements = resultsTable.findElements(By.xpath("//h4//b"));
         for (WebElement hotelNameElement : hotelNamesWebElements) {

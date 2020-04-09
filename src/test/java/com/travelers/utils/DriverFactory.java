@@ -1,5 +1,7 @@
-package com.travelers.helpers;
+package com.travelers.utils;
 
+import com.travelers.helpers.DriverType;
+import com.travelers.helpers.NoSuchDriverException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;

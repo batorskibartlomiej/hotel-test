@@ -49,11 +49,12 @@ public class SeleniumHelper {
     }
 
 
-    public static void takeScreenshot(WebDriver driver) throws IOException {
+    public static String takeScreenshot(WebDriver driver) throws IOException {
         TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
         File screenshotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
         File destinationFile = new File( "src/main/resources/" + LocalTime.now().getNano()+ ".png");
         Files.copy(screenshotFile.toPath(),destinationFile.toPath());
+        return destinationFile.getAbsolutePath();
     }
 
 
