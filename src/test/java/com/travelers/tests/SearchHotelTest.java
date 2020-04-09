@@ -26,7 +26,7 @@ public class SearchHotelTest extends BaseSeleniumTest {
 
         HomePage homePage = new HomePage(driver);
 
-        ResultPage resultPage = homePage.setCityHotel("Dubai")
+        ResultPage resultPage = homePage.setCityHotel(city)
                  .setDateRange(checkInDate,checkOutDate)
                  .opemTravellersModal()
                  .addAdult()

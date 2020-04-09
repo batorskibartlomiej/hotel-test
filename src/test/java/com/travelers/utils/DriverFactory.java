@@ -70,6 +70,11 @@ public class DriverFactory {
                 throw new NoSuchDriverException();
         }
     }
+
+    public static void resetDriver() {
+
+        driverInstance = null;
+    }
 }
 
 
