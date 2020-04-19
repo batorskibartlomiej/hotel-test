@@ -6,9 +6,8 @@ import com.aventstack.extentreports.MediaEntityModelProvider;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.travelers.helpers.SeleniumHelper;
 import com.travelers.utils.DriverFactory;
-import com.travelers.helpers.DriverType;
-import com.travelers.helpers.NoSuchDriverException;
-import org.junit.After;
+import com.travelers.utils.DriverType;
+import com.travelers.exceptions.NoSuchDriverException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -47,7 +46,7 @@ public abstract class BaseSeleniumTest {
     @AfterMethod
     public void tearDown() {
         System.out.println("Po tescie");
-        driver.quit();
+        //driver.quit();
         DriverFactory.resetDriver();
 
 
@@ -60,7 +59,7 @@ public abstract class BaseSeleniumTest {
 
     }
 
-    protected MediaEntityModelProvider getScreenshot() throws IOException {
+     MediaEntityModelProvider getScreenshot() throws IOException {
         return  MediaEntityBuilder.createScreenCaptureFromPath(SeleniumHelper.takeScreenshot(driver)).build();
     }
 

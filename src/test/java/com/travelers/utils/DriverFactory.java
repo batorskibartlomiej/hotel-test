@@ -1,7 +1,6 @@
 package com.travelers.utils;
 
-import com.travelers.helpers.DriverType;
-import com.travelers.helpers.NoSuchDriverException;
+import com.travelers.exceptions.NoSuchDriverException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -32,7 +31,7 @@ public class DriverFactory {
 
         switch (driverType) {
             case IE:
-                File ieExe = new File("src//main//resources//executables//drivers//IEDriverServer.exe");
+                File ieExe = new File("src//test//resources//executables//drivers//IEDriverServer.exe");
                 InternetExplorerDriverService ieService = new InternetExplorerDriverService.Builder()
                         .usingDriverExecutable(ieExe)
                         .usingAnyFreePort().build();
@@ -44,7 +43,7 @@ public class DriverFactory {
                 break;
 
             case CHROME:
-                File chromeExe = new File("src//main//resources//executables//drivers//chromedriver.exe");
+                File chromeExe = new File("src//test//resources//executables//drivers//chromedriver.exe");
                 ChromeDriverService chromeService = new ChromeDriverService.Builder()
                         .usingDriverExecutable(chromeExe)
                         .usingAnyFreePort().build();
@@ -56,7 +55,7 @@ public class DriverFactory {
                 break;
 
             case FIREFOX:
-                File firefoxExe = new File("src//main//resources//executables//drivers//geckodriver.exe");
+                File firefoxExe = new File("src//test//resources//executables//drivers//geckodriver.exe");
                 GeckoDriverService geckoDriverServiceService = new GeckoDriverService.Builder()
                         .usingDriverExecutable(firefoxExe)
                         .usingAnyFreePort().build();
@@ -77,6 +76,23 @@ public class DriverFactory {
 
         driverInstance = null;
     }
+
+
+    //bez casow przy sprawdzaniu tylko dla chroma
+/*    public static WebDriver getDriver() {
+        if (driverInstance == null) {
+            File chromeExe = new File("src//test//resources//executables//drivers//chromedriver.exe");
+            ChromeDriverService chromeService = new ChromeDriverService.Builder()
+                    .usingDriverExecutable(chromeExe)
+                    .usingAnyFreePort().build();
+            System.out.println("zmienna zostanie zainicjowana");
+            driverInstance = new ChromeDriver(chromeService);
+
+            driverInstance.manage().window().maximize();
+        }
+        return driverInstance;
+
+    }*/
 }
 
 

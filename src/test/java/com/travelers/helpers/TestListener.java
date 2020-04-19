@@ -1,6 +1,9 @@
 package com.travelers.helpers;
 
+import com.travelers.exceptions.NoSuchDriverException;
 import com.travelers.utils.DriverFactory;
+import com.travelers.utils.DriverType;
+import org.apache.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -8,32 +11,33 @@ import org.testng.ITestResult;
 import java.io.IOException;
 
 public class TestListener implements ITestListener {
+
+    Logger log = Logger.getLogger(TestListener.class);
     @Override
     public void onTestStart(ITestResult iTestResult) {
-        System.out.println("On test start");
+        log.debug("On test start");
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-        System.out.println("On test success");
+        log.debug("On test success");
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
         try {
-            System.out.println("On test failure");
+            log.debug("On test failure");
             SeleniumHelper.takeScreenshot(DriverFactory.getDriver(DriverType.CHROME));
-        }catch (IOException e) {
-            e.printStackTrace();
+        }catch (IOException  | NoSuchDriverException e) {
+           log.error(e.getStackTrace());
 
-        } catch (NoSuchDriverException e) {
-            e.printStackTrace();
+
         }
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-        System.out.println("On test skipped");
+        log.debug("On test skipped");
     }
 
     @Override
@@ -43,11 +47,11 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onStart(ITestContext iTestContext) {
-        System.out.println("On start");
+        log.debug("On start");
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-        System.out.println("On finish");
+        log.debug("On finish");
     }
 }
